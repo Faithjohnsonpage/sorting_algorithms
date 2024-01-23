@@ -5,7 +5,7 @@ void quick_sort(int *array, size_t size)
 	int upper_bound = size - 1;
 	int lower_bound = 0;
 
-	if (size < 2)
+	if (array == NULL || size < 2)
 		return;
 	
 	partition_sort(array, lower_bound, upper_bound, size);
@@ -26,39 +26,27 @@ void partition_sort(int *array, int lower_bound, int upper_bound, size_t size)
 
 int partition(int *array, int lower_bound, int upper_bound, size_t size)
 {
-	int start = upper_bound, end = lower_bound, temp;
+	int i = lower_bound - 1, j = lower_bound, temp;
 	int pivot = array[upper_bound];
 
-	while(start > end)
+	while (j <= upper_bound - 1)
 	{
-		pivot = array[upper_bound];
-
-		while (array[start] > pivot)
+		if (array[j] <= pivot)
 		{
-			start--;
+			i++;
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
 		}
-		while (array[end] < pivot)
-		{
-			end++;
-		}
-
-		if (start > end)
-		{
-			temp = array[start];
-			array[start] = array[end];
-			array[end] = temp;
-			/*printf("Swapped elements: array[%d] and array[%d] with pivot: %d\n", start, end, pivot);*/
-		}
+		j++;
 	}
-	
-	temp = array[upper_bound];
-	array[upper_bound] = array[end];
-	array[end] = temp;
+	temp = array[i + 1];
+	array[i + 1] = array[upper_bound];
+	array[upper_bound] = temp;
 
-	/*printf("Pivot %d placed at index %d\n", pivot, end);*/
 	print_array(array, size);
 
-	return end;
+	return i + 1;
 }
 
 
