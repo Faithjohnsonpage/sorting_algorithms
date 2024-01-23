@@ -7,7 +7,7 @@ void quick_sort(int *array, size_t size)
 
 	if (array == NULL || size < 2)
 		return;
-	
+
 	partition_sort(array, lower_bound, upper_bound, size);
 
 }
@@ -34,19 +34,25 @@ int partition(int *array, int lower_bound, int upper_bound, size_t size)
 		if (array[j] <= pivot)
 		{
 			i++;
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
+			if (i != j)
+			{
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+
+				print_array(array, size);
+			}
 		}
 		j++;
 	}
-	temp = array[i + 1];
-	array[i + 1] = array[upper_bound];
-	array[upper_bound] = temp;
+	if (i + 1 != upper_bound)
+	{
+		temp = array[i + 1];
+		array[i + 1] = array[upper_bound];
+		array[upper_bound] = temp;
 
-	print_array(array, size);
+		print_array(array, size);
+	}
 
 	return i + 1;
 }
-
-
