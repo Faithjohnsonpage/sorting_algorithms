@@ -48,12 +48,12 @@ void partition_sort(int *array, int lower_bound, int upper_bound, size_t size)
  * Return: The final position of the pivot after partitioning.
  */
 
-int lomuto_partition(int *array, int lower_bound, int upper_bound, size_t size)
+int lomuto_partition(int *array, int lower_bound, int high, size_t size)
 {
 	int i = lower_bound - 1, j = lower_bound, temp;
-	int pivot = array[upper_bound];
+	int pivot = array[high];
 
-	while (j <= upper_bound - 1)
+	while (j <= high - 1)
 	{
 		if (array[j] <= pivot)
 		{
@@ -69,11 +69,11 @@ int lomuto_partition(int *array, int lower_bound, int upper_bound, size_t size)
 		}
 		j++;
 	}
-	if (i + 1 != upper_bound)
+	if (i + 1 != high)
 	{
 		temp = array[i + 1];
-		array[i + 1] = array[upper_bound];
-		array[upper_bound] = temp;
+		array[i + 1] = array[high];
+		array[high] = temp;
 
 		print_array(array, size);
 	}
