@@ -1,5 +1,11 @@
 #include "sort.h"
 
+/**
+ * quick_sort - Sorts an array of integers using the Quick Sort algorithm.
+ * @array: Pointer to the array to be sorted.
+ * @size: Size of the array.
+ */
+
 void quick_sort(int *array, size_t size)
 {
 	int upper_bound = size - 1;
@@ -12,19 +18,37 @@ void quick_sort(int *array, size_t size)
 
 }
 
+/**
+ * partition_sort - Recursively sorts partitions of an array using Quick Sort.
+ * @array: Pointer to the array to be sorted.
+ * @lower_bound: The lower bound of the current partition.
+ * @upper_bound: The upper bound of the current partition.
+ * @size: Size of the array.
+ */
+
 void partition_sort(int *array, int lower_bound, int upper_bound, size_t size)
 {
 	int location;
 
 	if (lower_bound < upper_bound)
 	{
-		location = partition(array, lower_bound, upper_bound, size);
+		location = lomuto_partition(array, lower_bound, upper_bound, size);
 		partition_sort(array, lower_bound, location - 1, size);
 		partition_sort(array, location + 1, upper_bound, size);
 	}
 }
 
-int partition(int *array, int lower_bound, int upper_bound, size_t size)
+/**
+ * lomuto_partition - Partitions an array using the Lomuto partition scheme.
+ * @array: Pointer to the array to be partitioned.
+ * @lower_bound: The lower bound of the current partition.
+ * @upper_bound: The upper bound of the current partition.
+ * @size: Size of the array.
+ *
+ * Return: The final position of the pivot after partitioning.
+ */
+
+int lomuto_partition(int *array, int lower_bound, int upper_bound, size_t size)
 {
 	int i = lower_bound - 1, j = lower_bound, temp;
 	int pivot = array[upper_bound];
@@ -54,5 +78,5 @@ int partition(int *array, int lower_bound, int upper_bound, size_t size)
 		print_array(array, size);
 	}
 
-	return i + 1;
+	return (i + 1);
 }
