@@ -42,7 +42,7 @@ void partition_sort(int *array, int lower_bound, int upper_bound, size_t size)
  * lomuto_partition - Partitions an array using the Lomuto partition scheme.
  * @array: Pointer to the array to be partitioned.
  * @lower_bound: The lower bound of the current partition.
- * @upper_bound: The upper bound of the current partition.
+ * @high: The upper bound of the current partition.
  * @size: Size of the array.
  *
  * Return: The final position of the pivot after partitioning.
