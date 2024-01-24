@@ -114,7 +114,7 @@ void merge(int *array, int lb, int mid, int ub)
 	for (a = 0; a < n; a++)
 	{
 		printf("%d", temp_arr[a]);
-		if (a < n)
+		if (a < n - 1)
 			printf(", ");
 	}
 	printf("\n");
