@@ -108,16 +108,16 @@ void merge(int *array, int lb, int mid, int ub)
 		k++;
 	}
 
+	n = ub - lb + 1;
+
 	printf("[Done]: ");
-	for (a = lb; a <= ub; a++)
+	for (a = 0; a < n; a++)
 	{
-		printf("%d", array[a]);
-		if (a < ub)
+		printf("%d", temp_arr[a]);
+		if (a < n)
 			printf(", ");
 	}
 	printf("\n");
-
-	n = ub - lb + 1;
 
 	for (a = 0; a < n; a++)
 	{
