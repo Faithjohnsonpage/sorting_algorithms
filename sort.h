@@ -29,6 +29,11 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void partition_sort(int *array, int lower_bound, int upper_bound, size_t size);
 int lomuto_partition(int *array, int lower_bound, int high, size_t size);
+int hoare_partition(int *array, int lower_bound, int upper_bound, size_t size);
+void quick_sort_hoare(int *array, size_t size);
+void merge_sort(int *array, size_t size);
+void topDown_mergeSort(int *array, int lb, int ub);
+void merge(int *array, int lb, int mid, int ub);
 
 
 #endif /* SORT_H */
